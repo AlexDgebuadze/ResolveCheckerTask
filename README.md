@@ -1,0 +1,2 @@
+# ResolveCheckerTask
+test function  - promiseAllWithThreshold
