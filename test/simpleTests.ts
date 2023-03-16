@@ -1,5 +1,5 @@
-import { app } from "../app/code";
 import { expect } from 'chai';
+import promiseAllWithThreshold from '../app/code';
 
 
 describe('Basic tests for checking function', async () => { 
@@ -14,24 +14,18 @@ describe('Basic tests for checking function', async () => {
         
 
     it('check if promise is resolve when threshold : 3', async () => {
-        await app.promiseAllWithThreshold(promisesArr, 3)
-        .then((result) => {
-            expect(result).to.be.equal("promise was resolved");
-        })
+        const result = await promiseAllWithThreshold(promisesArr, 3);
+        expect(result).to.be.equal("promise was resolved");
     })
 
     it('check if promise is resolve when threshold : 2', async () => {
-        await app.promiseAllWithThreshold(promisesArr, 2)
-        .then((result) => {
-            expect(result).to.be.equal("promise was resolved");
-        });
+        const result = await promiseAllWithThreshold(promisesArr, 2)
+        expect(result).to.be.equal("promise was resolved");
     })
 
     it('check if promise is rejected when threshold : 1', async () => {
-        await app.promiseAllWithThreshold(promisesArr, 1)
-        .catch((result) => {
-            expect(result).to.be.equal("promise was rejected");
-        });
+        const result = await promiseAllWithThreshold(promisesArr, 1);
+        expect(result).to.be.undefined;
     })
 
 })

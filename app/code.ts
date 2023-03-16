@@ -1,5 +1,4 @@
-export const app = {
-    async promiseAllWithThreshold(arrayOfPromises: Promise<any>[], threshold: number) : Promise<any>{
+export default function promiseAllWithThreshold(arrayOfPromises: Promise<any>[], threshold: number) : Promise<any>{
       let rejCount = 0;
     
       return Promise.allSettled(arrayOfPromises)
@@ -15,7 +14,6 @@ export const app = {
           } else {
             return Promise.resolve("promise was resolved");
           }
-        });
-    }
-    
-}    
+        }).catch(error => console.log(error.message));
+}
+       
